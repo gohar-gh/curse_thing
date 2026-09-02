@@ -1,0 +1,99 @@
+{
+  "masthead": {
+    "wordmark": "thing.am",
+    "tagline": "The Registry of Petty Grievances",
+    "office": "Office of Minor Misfortune · Yerevan"
+  },
+  "hero": {
+    "titleLine1": "File a grievance.",
+    "titleLine2": "Receive a <em>sealed</em> certificate.",
+    "lede": "Somebody wronged you in a small, unforgivable way. Put it on the record.",
+    "cta": "Begin a filing",
+    "counter": "<b>{filed}</b> grievances filed · <b>{lifted}</b> lifted · office open since 2026"
+  },
+  "certificate": {
+    "registryLine1": "REG. OF PETTY GRIEVANCES",
+    "registryLine2": "OFFICE OF MINOR MISFORTUNE",
+    "clauseLabel": "CLAUSE",
+    "no": "No. {number}",
+    "title": "Certificate of Curse",
+    "subtitle": "DULY FILED · SEALED · IRREVOCABLE",
+    "bodyBeKnown": "Be it known that",
+    "bodyHasFiled": "has this day filed against",
+    "bodyGrievanceOf": "a grievance of the {degree} degree, and it is decreed:",
+    "expiresNever": "EXPIRES: NEVER",
+    "registrar": "CHIEF REGISTRAR",
+    "registrarName": "B. Grumbleton",
+    "pendingPayment": "PENDING PAYMENT"
+  },
+  "degrees": {
+    "first": "first",
+    "second": "second",
+    "third": "third",
+    "FIRST": "FIRST",
+    "SECOND": "SECOND",
+    "THIRD": "THIRD"
+  },
+  "categories": {
+    "domestic": "Domestic annoyance",
+    "workplace": "Workplace conduct",
+    "traffic": "Traffic behaviour",
+    "betrayal": "Betrayal, minor",
+    "unspecified": "Unspecified"
+  },
+  "filing": {
+    "heading": "Your filing",
+    "lede": "The Registry does not investigate. It only records, seals, and delivers.",
+    "filedBy": "FILED BY",
+    "filedAgainst": "FILED AGAINST",
+    "natureOfGrievance": "NATURE OF GRIEVANCE",
+    "submit": "Seal and issue — {price}",
+    "priceNote": "Delivered as a shareable link and a printable document.",
+    "noAccount": "No account.",
+    "namePlaceholderFrom": "Your name",
+    "namePlaceholderTo": "Their name",
+    "modeLabel": "WORDING",
+    "modeTemplate": "Choose from the registry",
+    "modeCustom": "Write it yourself",
+    "customTextLabel": "YOUR DECREE",
+    "customTextPlaceholder": "May every…",
+    "customTextHint": "Kept to petty inconvenience only — nothing about harm, illness, appearance, or anyone's family.",
+    "errorInvalid": "Something in the form wasn't filled in correctly.",
+    "errorEmpty": "Write your decree before sealing it.",
+    "errorBlocked": "That wording isn't allowed here — keep it to petty inconvenience, nothing about harm, illness, appearance, or family."
+  },
+  "preview": {
+    "heading": "Your certificate awaits its seal",
+    "lede": "Complete payment to unlock the certificate, get a shareable link, and download the PNG or PDF.",
+    "payButton": "Seal and issue — {price}",
+    "paymentFailed": "That payment didn't go through. Try again."
+  },
+  "certPage": {
+    "publicLink": "Public link",
+    "downloadPng": "Download PNG",
+    "downloadPdf": "Download PDF",
+    "sendOnTelegram": "Send on Telegram",
+    "copyLink": "Copy link"
+  },
+  "footer": {
+    "line1": "thing.am · The Registry of Petty Grievances",
+    "decorative": "Curses are decorative.",
+    "lift": "Lift a curse",
+    "contact": "Contact the Registrar",
+    "termsLink": "Terms",
+    "paymentMethodsLabel": "We accept",
+    "entertainmentLine": "thing.am is entertainment. Certificates have no legal effect."
+  },
+  "disclaimer": {
+    "noticeLabel": "NOTICE",
+    "heading": "This is just for fun.",
+    "body": "Every decree is generated automatically from a fixed, pre-written template bank (drafted with AI assistance) — no one at the Registry writes new wording in response to your filing, and nothing here is meant to offend, threaten, or harm anyone named on a certificate. Certificates have no legal or supernatural effect."
+  },
+  "terms": {
+    "pageTitle": "Terms and Conditions",
+    "backHome": "Back to thing.am"
+  },
+  "languageSwitcher": {
+    "label": "Language"
+  }
+}

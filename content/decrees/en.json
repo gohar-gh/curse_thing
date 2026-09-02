@@ -1,0 +1,222 @@
+{
+  "domestic": {
+    "first": [
+      { "key": "umbrella-once", "text": "May your umbrella turn inside out just once, on the walk that matters most." },
+      { "key": "remote-batteries", "text": "May the remote's batteries run out at the best part of the show." },
+      { "key": "sock-tomorrow", "text": "May one sock go missing from tomorrow's load." },
+      { "key": "shower-cold", "text": "May your shower run cold for the first ten seconds, just this once." },
+      { "key": "good-pen", "text": "May the good pen be nowhere you left it, today." },
+      { "key": "rice-floor", "text": "May a single grain of rice find the kitchen floor." },
+      { "key": "toilet-paper-fold", "text": "May the last square of toilet paper be folded the wrong way." },
+      { "key": "coffee-lukewarm", "text": "May your coffee cool to lukewarm the moment you sit down." },
+      { "key": "phone-buzz-nothing", "text": "May your phone buzz twice, then turn out to be nothing." },
+      { "key": "dishwasher-once", "text": "May the dishwasher leave one fork unwashed, this cycle only." },
+      { "key": "alarm-early", "text": "May your alarm go off one snooze earlier than planned." },
+      { "key": "fitted-sheet-slip", "text": "May the fitted sheet slip a single corner tonight." }
+    ],
+    "second": [
+      { "key": "dishwasher-fork", "text": "May the dishwasher leave exactly one fork dirty, every cycle, forever." },
+      { "key": "sock-vanish", "text": "May one sock vanish from every load you ever run." },
+      { "key": "earbud-die-first", "text": "May your left earbud lose power first, every single time." },
+      { "key": "milk-early", "text": "May the milk turn a day before the carton says it should." },
+      { "key": "scissors-drawer", "text": "May the good scissors live in a drawer you never open." },
+      { "key": "charger-fray", "text": "May your charger cable fray at the one spot that matters." },
+      { "key": "last-slice-stale", "text": "May the last slice always be the slightly stale one." },
+      { "key": "thermostat-off", "text": "May the thermostat sit one degree off comfortable, permanently." },
+      { "key": "doorbell-dinner", "text": "May the doorbell ring the moment you sit down to eat, every time." },
+      { "key": "keys-coat-pocket", "text": "May your keys hide in the coat pocket you check last." },
+      { "key": "wifi-important-call", "text": "May the WiFi drop for exactly as long as your important call." },
+      { "key": "umbrella-every-wind", "text": "May your umbrella turn inside out in every wind from now on." }
+    ],
+    "third": [
+      { "key": "headphones", "text": "May every pair of headphones you own tangle in your pocket, and may the knot never be the same knot twice." },
+      { "key": "good-chair-taken", "text": "May the good chair in every room you enter already be taken." },
+      { "key": "candle-crooked", "text": "May every candle you light burn crooked down one side, forever." },
+      { "key": "houseplant-worst-window", "text": "May your houseplants lean toward the window with the worst view, permanently." },
+      { "key": "freezer-favorite", "text": "May the freezer frost over your favorite thing first, every time." },
+      { "key": "toaster-uneven", "text": "May the toaster favor one side, browning it dark while the other stays pale, for the rest of your days." },
+      { "key": "playlist-same-three", "text": "May every playlist you shuffle open with the same three songs." },
+      { "key": "parking-spot-fills", "text": "May the parking spot nearest the door fill the instant you arrive, forever." },
+      { "key": "phone-screen-smudge", "text": "May your phone screen find a new smudge the second you finish cleaning it." },
+      { "key": "last-bite-fork", "text": "May the last bite of your favorite meal always slip off the fork." },
+      { "key": "mirror-smudged-corner", "text": "May every mirror in your home be smudged in exactly the corner you always check first." },
+      { "key": "mug-hairline-crack", "text": "May your favorite mug grow a new hairline crack each season, and never once break cleanly." }
+    ]
+  },
+  "workplace": {
+    "first": [
+      { "key": "printer-jam-once", "text": "May the printer jam on page one of your only copy." },
+      { "key": "meeting-five-late", "text": "May the meeting run five minutes long, just this once." },
+      { "key": "coffee-cold-meeting", "text": "May your coffee go cold in the one meeting you can't leave." },
+      { "key": "elevator-every-floor", "text": "May the elevator stop on every floor but yours, today." },
+      { "key": "stapler-missing", "text": "May the good stapler be missing from your desk this morning." },
+      { "key": "reply-all-once", "text": "May your reply-all be seen by exactly one person you'd rather it wasn't." },
+      { "key": "chair-squeak-once", "text": "May the office chair squeak once, right as the room goes quiet." },
+      { "key": "wifi-buffer-slide", "text": "May the WiFi buffer your video for three seconds during the important slide." },
+      { "key": "supply-closet-empty", "text": "May the last good pen in the supply closet be gone when you get there." },
+      { "key": "lunch-microwaved-short", "text": "May your lunch be microwaved a minute short by whoever used it before you." },
+      { "key": "invite-free-hour", "text": "May the calendar invite land during your only free hour." },
+      { "key": "badge-fail-once", "text": "May your badge fail the reader once, in front of someone." }
+    ],
+    "second": [
+      { "key": "printer-jam-report", "text": "May the printer jam on the last page of every report you submit." },
+      { "key": "meeting-nine-minutes", "text": "May every meeting you're in run exactly nine minutes long." },
+      { "key": "coffee-cold-forever", "text": "May your coffee go cold before the meeting you can't leave ever ends." },
+      { "key": "elevator-forever", "text": "May the elevator stop on every floor but yours, from now on." },
+      { "key": "stapler-always-missing", "text": "May the good stapler always be missing from your desk." },
+      { "key": "reply-all-always", "text": "May someone reply-all to the email you meant to send quietly, every time." },
+      { "key": "chair-squeak-wrong-moment", "text": "May the office chair squeak once per meeting, always at the wrong moment." },
+      { "key": "wifi-buffer-always", "text": "May the WiFi buffer for exactly three seconds during every slide that matters." },
+      { "key": "supply-closet-week", "text": "May the supply closet run out of good pens the week you need them." },
+      { "key": "lunch-microwaved-forever", "text": "May your lunch be microwaved one minute short, forever, by whoever's ahead of you." },
+      { "key": "invite-only-hour", "text": "May every calendar invite land in your only free hour." },
+      { "key": "badge-fail-monthly", "text": "May your badge fail the reader in front of someone, at least once a month." }
+    ],
+    "third": [
+      { "key": "meeting-schedule-next", "text": "May every meeting you organize run long, and may the last five minutes always be about scheduling the next one." },
+      { "key": "desk-plant-survive-not-thrive", "text": "May your desk plant outlast everyone else's, but never quite thrive." },
+      { "key": "thermostat-one-away", "text": "May the office thermostat be set by someone who is always one degree away from you, forever." },
+      { "key": "name-misspelled", "text": "May your name be misspelled on every badge and welcome email issued to you at any job, for life." },
+      { "key": "conference-room-booked", "text": "May the good conference room always be booked exactly when you need it, and only then." },
+      { "key": "inbox-one-unread", "text": "May your inbox settle at exactly one unread message you can never quite bring yourself to open." },
+      { "key": "group-project-slide", "text": "May every group project assign you the slide nobody else wanted." },
+      { "key": "coffee-machine-runs-out", "text": "May the office coffee machine run out the moment it's your turn, forever." },
+      { "key": "chair-wheel-thread", "text": "May your chair's wheel catch the one loose thread in the carpet, every single day." },
+      { "key": "out-of-office-typo", "text": "May your out-of-office reply always contain one small, permanent typo you never notice." },
+      { "key": "whiteboard-marker-dry", "text": "May the whiteboard marker nearest you always be the one that's nearly dry." },
+      { "key": "review-smile-more", "text": "May every performance review mention, gently, that you could smile more." }
+    ]
+  },
+  "traffic": {
+    "first": [
+      { "key": "light-red-once", "text": "May the light turn red the moment you approach, just this once." },
+      { "key": "car-ahead-brakes", "text": "May the car ahead of you brake for no reason, today." },
+      { "key": "every-red-light-once", "text": "May you catch every red light on one ordinary drive." },
+      { "key": "gas-station-out", "text": "May the gas station nearest you be out of your grade, just once." },
+      { "key": "parking-spot-taken-once", "text": "May someone take the parking spot you were waiting for, today." },
+      { "key": "gps-mispronounce-once", "text": "May your GPS mispronounce one street name, badly." },
+      { "key": "bus-pulls-away-once", "text": "May the bus pull away as you reach the stop, this one time." },
+      { "key": "tailgate-one-mile", "text": "May the car behind you tailgate for one uncomfortable mile." },
+      { "key": "wipers-squeak-once", "text": "May your windshield wipers squeak once, in traffic." },
+      { "key": "toll-slow-line-once", "text": "May the toll booth line you choose be the slow one, today." },
+      { "key": "circle-block-once", "text": "May you circle the block once more than you should have to." },
+      { "key": "crosswalk-slow-once", "text": "May the crosswalk signal count down slower than it should, just this once." }
+    ],
+    "second": [
+      { "key": "every-red-light-always", "text": "May you catch every red light on your way to anywhere that matters." },
+      { "key": "car-ahead-brakes-always", "text": "May the car ahead of you brake for no reason, on every drive." },
+      { "key": "gas-station-pricier", "text": "May the gas station nearest you always be slightly more expensive than the next one." },
+      { "key": "parking-spot-taken-always", "text": "May someone take your parking spot the moment you signal for it, forever." },
+      { "key": "gps-mispronounce-always", "text": "May your GPS mispronounce the same street name, every time, for years." },
+      { "key": "bus-pulls-away-always", "text": "May the bus pull away exactly as you reach the stop, from now on." },
+      { "key": "tailgate-every-drive", "text": "May the car behind you tailgate you for one uncomfortable mile, every drive." },
+      { "key": "wipers-squeak-always", "text": "May your windshield wipers squeak in every light rain." },
+      { "key": "toll-slow-line-always", "text": "May you always choose the slow line at the toll booth." },
+      { "key": "crosswalk-slow-always", "text": "May the crosswalk signal always count down slower than you'd like." },
+      { "key": "roundabout-confused-driver", "text": "May every roundabout you enter have one driver who doesn't understand roundabouts." },
+      { "key": "turn-signal-slow", "text": "May your turn signal outlast every other bulb in the car, and click a half-second too slow, forever." }
+    ],
+    "third": [
+      { "key": "road-under-construction", "text": "May every road you take home be the one under construction." },
+      { "key": "perfect-spot-not-yours", "text": "May you find the perfect parking spot, and then find it was never yours to take." },
+      { "key": "check-engine-light", "text": "May your check-engine light come on exactly when it's least convenient, and go off again on its own, forever unexplained." },
+      { "key": "driver-cuts-off-hurry", "text": "May the driver who cuts you off be, without exception, in more of a hurry than you'll ever know." },
+      { "key": "pothole-finds-tire", "text": "May the one pothole on your street find your tire, every winter, without fail." },
+      { "key": "mirror-slips-first-turn", "text": "May your rearview mirror slip out of place on the first turn of every drive." },
+      { "key": "let-merge-no-thanks", "text": "May you be the car everyone lets merge, and never once say thank you for." },
+      { "key": "gas-gauge-early", "text": "May the gas gauge sit on empty a little sooner than the tank actually is, for the rest of your driving days." },
+      { "key": "song-stuck-drive", "text": "May every long drive end with a song stuck in your head that you didn't even like." },
+      { "key": "camera-always-watching", "text": "May the one traffic camera on your route always seem to be watching, whether it is or not." },
+      { "key": "alarm-empty-lot", "text": "May your car alarm go off once, for no reason, in a quiet parking lot, forever remembered by everyone nearby." },
+      { "key": "road-home-longer", "text": "May the road home always feel one traffic light longer than it should." }
+    ]
+  },
+  "betrayal": {
+    "first": [
+      { "key": "last-slice-once", "text": "May the last slice you were saving be eaten by someone else, just this once." },
+      { "key": "spoiler-once", "text": "May a spoiler reach you before you finish the episode, today." },
+      { "key": "plans-cancelled-once", "text": "May someone cancel plans on you with less notice than you deserve, this one time." },
+      { "key": "photo-left-off-once", "text": "May your name be left off one group photo you were actually in." },
+      { "key": "secret-travels-once", "text": "May a secret you told in confidence travel one step further than intended." },
+      { "key": "borrowed-worse-once", "text": "May someone borrow something of yours and return it a little worse, just once." },
+      { "key": "seat-taken-once", "text": "May your favorite seat be taken, by someone who knew it was yours." },
+      { "key": "last-to-hear-once", "text": "May you be the last to hear news that concerns you directly." },
+      { "key": "joke-late-once", "text": "May someone laugh a beat too late at your best joke, today." },
+      { "key": "gift-forgotten-once", "text": "May your gift be the one nobody quite remembers who gave it." },
+      { "key": "credit-taken-once", "text": "May someone take credit for one small thing you did well." },
+      { "key": "left-on-read-once", "text": "May a friend leave you on read for just long enough to notice." }
+    ],
+    "second": [
+      { "key": "last-slice-always", "text": "May the last slice, whatever it is, always be eaten by someone else." },
+      { "key": "spoilers-always", "text": "May spoilers reach you before you finish anything you're excited about." },
+      { "key": "plans-cancelled-always", "text": "May plans be cancelled on you with just enough notice to be annoying, forever." },
+      { "key": "photo-left-off-always", "text": "May your name be left off group photos you were standing right next to." },
+      { "key": "secret-travels-always", "text": "May the secrets you tell always travel one step further than you meant." },
+      { "key": "borrowed-worse-always", "text": "May the things you lend come back a little worse, every time." },
+      { "key": "seat-taken-always", "text": "May someone always take the seat that was quietly, understood-ly, yours." },
+      { "key": "last-to-hear-always", "text": "May you always be the last to hear news that concerns you." },
+      { "key": "joke-late-always", "text": "May your best jokes land a beat late, every time, forever." },
+      { "key": "gift-forgotten-always", "text": "May your gifts be the ones nobody remembers giving." },
+      { "key": "credit-taken-always", "text": "May someone always take credit for the small things you did well." },
+      { "key": "left-on-read-always", "text": "May you be left on read just long enough to notice, every time." }
+    ],
+    "third": [
+      { "key": "loan-forgotten-amount", "text": "May everyone who ever borrowed money from you forget the exact amount, forever, in their favor." },
+      { "key": "group-chat-moves-on", "text": "May the group chat move on to a new joke exactly as you finally understand the old one." },
+      { "key": "forwarded-message-shrug", "text": "May the person who forwarded your private message never once feel it was a big deal." },
+      { "key": "reunion-reminds", "text": "May every reunion remind you, gently and repeatedly, of the one thing you'd rather forget." },
+      { "key": "photo-not-posted", "text": "May your most flattering photo always be the one nobody thinks to post." },
+      { "key": "friend-never-apologizes", "text": "May the friend who never apologizes remain, infuriatingly, easy to forgive." },
+      { "key": "gift-polite-enthusiasm", "text": "May your thoughtful gifts be met with polite enthusiasm, forever, and nothing more." },
+      { "key": "remember-birthdays-not-yours", "text": "May you remember everyone's birthday, and be remembered on none of yours." },
+      { "key": "wronged-nice-life", "text": "May the one who wronged you go on to have, by all appearances, a very nice life." },
+      { "key": "story-better-retold", "text": "May every story you tell be slightly better in someone else's retelling." },
+      { "key": "reliable-not-exciting", "text": "May you be, for the rest of your days, the reliable friend and never once the exciting one." },
+      { "key": "apology-too-late", "text": "May the apology you're owed arrive eventually, and land just a little too late to matter." }
+    ]
+  },
+  "unspecified": {
+    "first": [
+      { "key": "small-inconvenience-once", "text": "May today contain one small inconvenience, unspecified, and thoroughly deserved." },
+      { "key": "minor-wrong-once", "text": "May something minor go slightly wrong, just once, in a way you'll forget by evening." },
+      { "key": "drop-catch-once", "text": "May you drop something small and catch it, just barely, only this once." },
+      { "key": "text-unanswered-once", "text": "May one text go unanswered a little longer than it should, today." },
+      { "key": "song-ends-once", "text": "May your favorite song end just as it gets to the good part, once." },
+      { "key": "cloud-photo-once", "text": "May a single cloud pass over you at the worst possible moment for a photo." },
+      { "key": "misplace-find-once", "text": "May you misplace something small, and find it an hour later, in the first place you looked." },
+      { "key": "elevator-stairs-once", "text": "May the elevator arrive at the exact moment you decide to take the stairs." },
+      { "key": "drizzle-no-umbrella-once", "text": "May a light drizzle begin the moment you step outside without an umbrella, briefly." },
+      { "key": "battery-drop-once", "text": "May your phone battery drop from 20% to 1% faster than it should, once." },
+      { "key": "you-too-waiter-once", "text": "May you say 'you too' when the waiter tells you to enjoy your meal, and know it, immediately." },
+      { "key": "page-sticks-once", "text": "May one page of every book you read stick slightly to the next." }
+    ],
+    "second": [
+      { "key": "small-inconveniences-often", "text": "May small inconveniences find you a little more often than they find anyone else." },
+      { "key": "slightly-wrong-pattern", "text": "May things go slightly wrong just often enough that you start to notice a pattern." },
+      { "key": "drop-catch-often", "text": "May you drop small things a little more than is statistically fair, and always just barely catch them." },
+      { "key": "songs-end-good-part", "text": "May your favorite songs end just as they reach the good part, every time." },
+      { "key": "cloud-every-photo", "text": "May a cloud pass over you at every photo that mattered." },
+      { "key": "misplace-find-too-late", "text": "May you misplace things a little more than you used to, and find them a little too late." },
+      { "key": "elevator-stairs-always", "text": "May the elevator arrive the moment you commit to the stairs, from now on." },
+      { "key": "drizzle-no-umbrella-often", "text": "May light rain begin the moment you leave the umbrella behind, more often than chance allows." },
+      { "key": "battery-drop-often", "text": "May your phone battery drop unreasonably fast, on the days you need it most." },
+      { "key": "awkward-small-talk", "text": "May you say something slightly awkward in return to small talk, and remember it that night." },
+      { "key": "page-sticks-always", "text": "May a page in every book you own stick faintly to the next." },
+      { "key": "luck-small-constant", "text": "May your bad luck be small, constant, and impossible to complain about without sounding petty." }
+    ],
+    "third": [
+      { "key": "quiet-persistent-tax", "text": "May you be, from this day forward, a person to whom small things simply happen — nothing dramatic, nothing worth a story, just a quiet, persistent tax on your patience." },
+      { "key": "queue-slower", "text": "May every queue you join move slower than the one beside it, and may the one beside it move slower the moment you switch." },
+      { "key": "one-page-behind", "text": "May you always be one page behind in the group reading assignment, forever, gently." },
+      { "key": "luck-just-fine", "text": "May your luck be, on the whole, fine — just fine — for the rest of your natural life." },
+      { "key": "weather-app-wrong", "text": "May the weather app be wrong about your day, specifically, more than anyone else's." },
+      { "key": "almost-win-small", "text": "May you always almost win the small things — the raffle, the coin toss, the last seat." },
+      { "key": "reliable-never-lucky", "text": "May you be remembered as reliable, dependable, and never once as lucky." },
+      { "key": "shortcut-long-way", "text": "May every shortcut you take turn out, quietly, to be the long way." },
+      { "key": "one-email-behind", "text": "May you be, for the rest of your life, one email behind on everything that doesn't really matter." },
+      { "key": "name-autocorrected", "text": "May your name be autocorrected to someone else's, softly, forever, in ways you only half notice." },
+      { "key": "universe-owes-nothing", "text": "May the universe owe you nothing, and may it never once pay you back for the small, unspecified things." },
+      { "key": "curse-underwhelming", "text": "May this curse itself be a little underwhelming, and may you feel, reading it, a small, petty satisfaction anyway." }
+    ]
+  }
+}

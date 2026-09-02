@@ -1,0 +1,85 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+:root {
+  --paper: #E7EBE2;
+  --paper-deep: #D6DCCD;
+  --ink: #16211B;
+  --ink-soft: #4A5A50;
+  --green: #2F4F3E;
+  --seal: #6E2418;
+  --gold: #9C7F3A;
+  --rule: rgba(22, 33, 27, .22);
+  --cert-surface: #F4F6EF;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-green: var(--green);
+  --color-seal: var(--seal);
+  --color-gold: var(--gold);
+  --color-rule: var(--rule);
+  --color-cert-surface: var(--cert-surface);
+  --font-serif: "EB Garamond", Georgia, serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-armenian: "Noto Serif Armenian", "EB Garamond", Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(47, 79, 62, .05) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(0deg, rgba(47, 79, 62, .035) 0 1px, transparent 1px 7px);
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+.terms-content {
+  font-family: var(--font-serif), var(--font-armenian);
+  color: var(--ink);
+  line-height: 1.7;
+}
+.terms-content h1 {
+  font-size: 34px;
+  font-weight: 400;
+  margin: 0 0 28px;
+  border-bottom: 3px double var(--rule);
+  padding-bottom: 16px;
+}
+.terms-content h2 {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 40px 0 12px;
+}
+.terms-content p {
+  margin: 0 0 16px;
+  color: var(--ink-soft);
+}
+.terms-content strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.terms-content em {
+  color: var(--ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
