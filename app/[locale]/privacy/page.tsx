@@ -10,13 +10,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: `thing.am — ${t("terms.pageTitle")}` };
+  return { title: `thing.am — ${t("privacy.pageTitle")}` };
 }
 
-export default async function TermsPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   const locale = isLocale(rawLocale) ? rawLocale : "en";
   setRequestLocale(locale);
 
-  return <LegalDocPage contentDir="terms" backHomeKey="terms.backHome" locale={locale} />;
+  return <LegalDocPage contentDir="privacy" backHomeKey="privacy.backHome" locale={locale} />;
 }

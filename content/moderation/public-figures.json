@@ -1,0 +1,6 @@
+{
+  "_comment": "Spec §13: reject names matching known public figures, so the service doesn't become a harassment vector for journalists/politicians. This list intentionally ships empty — who counts as a 'public figure' worth blocking is an editorial/policy judgment for the operator to own and keep current (officeholders change, and a stale hardcoded list would be actively misleading). Populate with lowercase full names, one per locale array, before launch.",
+  "en": [],
+  "hy": [],
+  "ru": []
+}

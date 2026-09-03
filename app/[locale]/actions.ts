@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { createDraftCertificate } from "@/lib/certificates";
 import {
@@ -16,6 +16,8 @@ import {
   type Degree,
 } from "@/lib/decrees";
 import { findBlockedWord } from "@/lib/blocklist";
+import { moderateName } from "@/lib/name-moderation";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import type { Locale } from "@/i18n/locales";
 
 const MAX_CUSTOM_LENGTH = 280;
@@ -57,6 +59,13 @@ export async function fileGrievance(
   _prevState: FilingFormState,
   formData: FormData
 ): Promise<FilingFormState> {
+  const requestHeaders = await headers();
+  const ip = getClientIp(requestHeaders);
+  const { allowed } = await checkRateLimit(ip);
+  if (!allowed) {
+    return { error: "rate_limited" };
+  }
+
   const parsed = filingSchema.safeParse({
     fromName: sanitizeName(String(formData.get("fromName") ?? "")),
     toName: sanitizeName(String(formData.get("toName") ?? "")),
@@ -71,6 +80,14 @@ export async function fileGrievance(
   }
 
   const { fromName, toName, category, locale, mode } = parsed.data;
+
+  for (const name of [fromName, toName]) {
+    const result = moderateName(name, locale as Locale);
+    if (!result.ok) {
+      return { error: `name_${result.reason}` };
+    }
+  }
+
   const degree = randomDegree();
 
   let decreeText: string;

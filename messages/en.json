@@ -60,7 +60,11 @@
     "customTextHint": "Kept to petty inconvenience only — nothing about harm, illness, appearance, or anyone's family.",
     "errorInvalid": "Something in the form wasn't filled in correctly.",
     "errorEmpty": "Write your decree before sealing it.",
-    "errorBlocked": "That wording isn't allowed here — keep it to petty inconvenience, nothing about harm, illness, appearance, or family."
+    "errorBlocked": "That wording isn't allowed here — keep it to petty inconvenience, nothing about harm, illness, appearance, or family.",
+    "errorRateLimited": "Too many filings from here recently. Try again in a bit.",
+    "errorNameSentence": "That name field looks like a sentence, not a name — please enter just a name.",
+    "errorNameBlocked": "That name isn't allowed here.",
+    "errorNamePublicFigure": "Certificates can't be filed against that name."
   },
   "preview": {
     "heading": "Your certificate awaits its seal",
@@ -73,7 +77,13 @@
     "downloadPng": "Download PNG",
     "downloadPdf": "Download PDF",
     "sendOnTelegram": "Send on Telegram",
-    "copyLink": "Copy link"
+    "copyLink": "Copy link",
+    "reportLink": "Report this certificate",
+    "reportSubject": "Report certificate No. {slug}"
+  },
+  "removed": {
+    "heading": "This certificate has been removed.",
+    "body": "It was taken down following a report from the Registry's moderation process."
   },
   "footer": {
     "line1": "thing.am · The Registry of Petty Grievances",
@@ -81,6 +91,8 @@
     "lift": "Lift a curse",
     "contact": "Contact the Registrar",
     "termsLink": "Terms",
+    "registryLink": "Registry",
+    "privacyLink": "Privacy",
     "paymentMethodsLabel": "We accept",
     "entertainmentLine": "thing.am is entertainment. Certificates have no legal effect."
   },
@@ -92,6 +104,22 @@
   "terms": {
     "pageTitle": "Terms and Conditions",
     "backHome": "Back to thing.am"
+  },
+  "privacy": {
+    "pageTitle": "Privacy Policy",
+    "backHome": "Back to thing.am"
+  },
+  "ledger": {
+    "pageTitle": "The Public Ledger",
+    "heading": "The public ledger",
+    "sub": "Every filing is recorded. Names are withheld; the grievance is not.",
+    "colNo": "NO.",
+    "colDecree": "DECREE",
+    "colDegree": "DEGREE",
+    "empty": "No certificates have been sealed yet.",
+    "prev": "Previous",
+    "next": "Next",
+    "pageOf": "Page {current} of {total}"
   },
   "languageSwitcher": {
     "label": "Language"

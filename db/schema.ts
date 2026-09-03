@@ -21,6 +21,11 @@ export const certificates = pgTable("certificates", {
   status: text("status").notNull().default("pending"), // pending | paid | lifted
   paidAt: timestamp("paid_at", { withTimezone: true }),
   liftedBy: integer("lifted_by"),
+  // Admin moderation (spec §13): set when a named person's takedown request,
+  // or another moderation action, removes a certificate from view. Kept
+  // distinct from `status` so payment history/analytics aren't disturbed by
+  // a later unpublish.
+  unpublishedAt: timestamp("unpublished_at", { withTimezone: true }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
@@ -38,7 +43,18 @@ export const payments = pgTable("payments", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
+// Rate limiting (spec §13: 10 filings/hour per IP). Backed by the DB rather
+// than in-memory state so it works correctly across Vercel's stateless
+// serverless invocations. Rows are short-lived — a cheap cleanup query (or
+// a cron) can prune anything older than the window.
+export const rateLimitHits = pgTable("rate_limit_hits", {
+  id: serial("id").primaryKey(),
+  ip: text("ip").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 export type Certificate = typeof certificates.$inferSelect;
 export type NewCertificate = typeof certificates.$inferInsert;
 export type Payment = typeof payments.$inferSelect;
 export type NewPayment = typeof payments.$inferInsert;
+export type RateLimitHit = typeof rateLimitHits.$inferSelect;

@@ -47,8 +47,14 @@ export function Footer() {
           <div className="flex justify-between items-center gap-4 flex-wrap font-mono text-[11px] text-white/60 border-t border-white/15 pt-4">
             <div>{t("footer.line1")}</div>
             <div className="flex items-center gap-4 flex-wrap">
+              <Link href="/registry" className="text-white/60 hover:text-white/90">
+                {t("footer.registryLink")}
+              </Link>
               <Link href="/terms" className="text-white/60 hover:text-white/90">
                 {t("footer.termsLink")}
+              </Link>
+              <Link href="/privacy" className="text-white/60 hover:text-white/90">
+                {t("footer.privacyLink")}
               </Link>
               <span>{t("footer.contact")}</span>
             </div>

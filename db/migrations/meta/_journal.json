@@ -15,6 +15,13 @@
       "when": 1788342935334,
       "tag": "0001_seed-registry-offset",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1788365816069,
+      "tag": "0002_thin_mulholland_black",
+      "breakpoints": true
     }
   ]
 }

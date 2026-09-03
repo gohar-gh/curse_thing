@@ -7,6 +7,7 @@ import { Certificate } from "@/components/Certificate";
 import type { Category, Degree } from "@/lib/decrees";
 import type { Locale } from "@/i18n/locales";
 import { formatPriceAMD, PRICE_AMD } from "@/lib/pricing";
+import { MODERATION_EMAIL } from "@/lib/moderation-contact";
 import { startPayment } from "./actions";
 
 type Props = {
@@ -42,6 +43,15 @@ export default async function CertificatePage({ params, searchParams }: Props) {
   const cert = await getCertificateBySlug(slug);
   if (!cert) {
     notFound();
+  }
+
+  if (cert.unpublishedAt) {
+    return (
+      <section className="max-w-[1020px] mx-auto px-7 py-20 flex flex-col items-center text-center gap-2">
+        <h1 className="font-normal text-2xl m-0 text-ink">{t("removed.heading")}</h1>
+        <p className="text-ink-soft m-0 max-w-[52ch]">{t("removed.body")}</p>
+      </section>
+    );
   }
 
   const pending = cert.status === "pending";
@@ -90,6 +100,15 @@ export default async function CertificatePage({ params, searchParams }: Props) {
               {t("preview.payButton", { price: formatPriceAMD(PRICE_AMD) })}
             </button>
           </form>
+
+          <a
+            href={`mailto:${MODERATION_EMAIL}?subject=${encodeURIComponent(
+              t("certPage.reportSubject", { slug })
+            )}`}
+            className="font-mono text-[11px] text-ink-soft hover:text-seal underline underline-offset-2"
+          >
+            {t("certPage.reportLink")}
+          </a>
         </>
       ) : (
         <>
@@ -123,6 +142,15 @@ export default async function CertificatePage({ params, searchParams }: Props) {
               {t("certPage.downloadPdf")}
             </a>
           </div>
+
+          <a
+            href={`mailto:${MODERATION_EMAIL}?subject=${encodeURIComponent(
+              t("certPage.reportSubject", { slug })
+            )}`}
+            className="font-mono text-[11px] text-ink-soft hover:text-seal underline underline-offset-2"
+          >
+            {t("certPage.reportLink")}
+          </a>
         </>
       )}
     </section>

@@ -34,14 +34,17 @@ export function FilingForm() {
   const [toName, setToName] = useState("");
   const [state, formAction] = useActionState(fileGrievance, initialState);
 
-  const errorMessage =
-    state.error === "empty"
-      ? t("filing.errorEmpty")
-      : state.error === "blocked"
-        ? t("filing.errorBlocked")
-        : state.error
-          ? t("filing.errorInvalid")
-          : null;
+  const ERROR_KEYS: Record<string, string> = {
+    empty: "filing.errorEmpty",
+    blocked: "filing.errorBlocked",
+    rate_limited: "filing.errorRateLimited",
+    name_sentence: "filing.errorNameSentence",
+    name_blocked_word: "filing.errorNameBlocked",
+    name_public_figure: "filing.errorNamePublicFigure",
+  };
+  const errorMessage = state.error
+    ? t(ERROR_KEYS[state.error] ?? "filing.errorInvalid")
+    : null;
 
   return (
     <section className="max-w-[1020px] mx-auto px-7 border-t-[3px] border-double border-rule pt-[52px] pb-5" id="file">
