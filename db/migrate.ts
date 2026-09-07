@@ -20,6 +20,10 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error(err);
+  // Log the message only, not the full error object — some postgres
+  // driver failure modes (e.g. connection errors) embed the raw
+  // connection string, including its password, in error properties
+  // beyond .message.
+  console.error("Migration failed:", err instanceof Error ? err.message : err);
   process.exit(1);
 });
