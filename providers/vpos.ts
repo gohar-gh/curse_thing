@@ -1,108 +1,165 @@
-import crypto from "node:crypto";
 import type { PaymentProvider } from "./types";
-import { slugFromId } from "@/lib/slug";
 
 /**
- * Armenian V-POS (ArCa) provider.
+ * Armenian V-POS provider — Ameriabank vPOS 3.1 REST API.
  *
- * TODO(vpos-credentials): this is built against the general shape of ArCa's
- * documented VPOS2 REST protocol (register → hosted redirect → server
- * callback, HMAC-signed), but the spec explicitly calls out that the exact
- * callback signature scheme varies by bank and must be confirmed with the
- * acquirer before going live. Do not treat this as verified against real
- * ArCa documentation — swap in real test credentials and re-check the
- * signature verification logic in `verifyCallback` against ArCa's actual
- * integration guide first.
+ * Built directly against the vendor's API doc ("AmeriaBank vPOS 3.1 — API
+ * Protocol Description", vPOS_Eng_3.1.docx). Two things from that doc are
+ * still unconfirmed and flagged below:
+ *   - TODO(vpos-credentials): real ClientID/Username/Password from the
+ *     bank. VPOS_BASE_URL defaults to the documented *test* host — the
+ *     doc never states the production host, confirm it with Ameriabank.
+ *   - TODO(vpos-stage): whether this merchant's terminal is configured
+ *     single-stage (funds captured immediately, OrderStatus 2) or
+ *     two-stage (funds held, OrderStatus 1, needs a ConfirmPayment to
+ *     capture) is a terminal-level setting on the bank's side, not
+ *     something the API request controls. `verifyCallback` below handles
+ *     both cases defensively.
+ *
+ * Flow (this is a redirect+poll protocol, not a push webhook):
+ *   1. createPayment calls InitPayment, gets a PaymentID, and returns the
+ *      hosted-payment-page URL to redirect the browser to.
+ *   2. The customer pays on Ameriabank's own page.
+ *   3. Ameriabank redirects the browser back to BackURL (our
+ *      /api/webhooks/vpos route) with orderID/paymentID/resposneCode
+ *      ["resposneCode" is the vendor's own spelling, not a typo we
+ *      introduced] as query params.
+ *   4. verifyCallback does NOT trust those query params on their own —
+ *      it calls GetPaymentDetails server-to-server with our credentials
+ *      to get the authoritative OrderStatus. That authenticated call is
+ *      this protocol's equivalent of signature verification (spec §7).
  */
 
-const VPOS_BASE_URL = process.env.VPOS_BASE_URL ?? "https://servicestest.arca.am:8445/vpos2/rest";
-const MERCHANT_ID = process.env.VPOS_MERCHANT_ID ?? "";
-const MERCHANT_SECRET = process.env.VPOS_MERCHANT_SECRET ?? "";
-const CALLBACK_SECRET = process.env.VPOS_CALLBACK_SECRET ?? MERCHANT_SECRET;
+const VPOS_BASE_URL = (process.env.VPOS_BASE_URL ?? "https://servicestest.ameriabank.am/VPOS").replace(
+  /\/$/,
+  ""
+);
+const CLIENT_ID = process.env.VPOS_CLIENT_ID ?? "";
+const USERNAME = process.env.VPOS_USERNAME ?? "";
+const PASSWORD = process.env.VPOS_PASSWORD ?? "";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
 
-type VposRegisterResponse = {
-  orderId?: string;
-  formUrl?: string;
-  errorCode?: string;
-  errorMessage?: string;
+// ISO 4217 numeric currency codes the API expects (§ InitPaymentRequest).
+// This app only ever charges AMD, but the map is here because the API
+// takes the numeric code, not the "AMD" string we use for display.
+const CURRENCY_CODES: Record<string, string> = {
+  AMD: "051",
+  EUR: "978",
+  USD: "840",
+  RUB: "643",
 };
 
-type VposCallbackPayload = {
-  orderId?: string;
-  orderNumber?: string;
-  status?: string; // "1" / "success" style flag, exact contract TBD
-  amount?: string | number;
-  signature?: string;
+type InitPaymentResponse = {
+  PaymentID?: string;
+  ResponseCode?: number; // successful = 1 (InitPayment uses this convention, not the "00" family below)
+  ResponseMessage?: string;
 };
+
+type PaymentDetailsResponse = {
+  ResponseCode?: string; // successful = "00" (Table 1)
+  ResponseMessage?: string;
+  OrderStatus?: number; // Table 2: 0 started,1 approved(held),2 deposited,3 void,4 refunded,5 autoauthorized,6 declined
+  OrderID?: string;
+  Amount?: number;
+};
+
+type ConfirmPaymentResponse = {
+  ResponseCode?: string;
+  ResponseMessage?: string;
+};
+
+async function vposFetch<T>(path: string, body: Record<string, unknown>): Promise<T> {
+  const response = await fetch(`${VPOS_BASE_URL}/api/VPOS/${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  return response.json() as Promise<T>;
+}
+
+async function getPaymentDetails(paymentId: string): Promise<PaymentDetailsResponse> {
+  return vposFetch<PaymentDetailsResponse>("GetPaymentDetails", {
+    PaymentID: paymentId,
+    Username: USERNAME,
+    Password: PASSWORD,
+  });
+}
+
+async function confirmPayment(paymentId: string, amount: number): Promise<ConfirmPaymentResponse> {
+  return vposFetch<ConfirmPaymentResponse>("ConfirmPayment", {
+    PaymentID: paymentId,
+    Username: USERNAME,
+    Password: PASSWORD,
+    Amount: amount,
+  });
+}
 
 export const vposProvider: PaymentProvider = {
   async createPayment(certId, amount, currency) {
-    if (!MERCHANT_ID || !MERCHANT_SECRET) {
+    if (!CLIENT_ID || !USERNAME || !PASSWORD) {
       throw new Error(
-        "VPOS_MERCHANT_ID / VPOS_MERCHANT_SECRET are not configured — see .env.example TODO(vpos-credentials)."
+        "VPOS_CLIENT_ID / VPOS_USERNAME / VPOS_PASSWORD are not configured — see .env.example TODO(vpos-credentials)."
       );
     }
 
-    // These are browser redirect targets, not the server-to-server callback
-    // — that's a separate notification to /api/webhooks/vpos configured on
-    // the acquirer's side (exact mechanism TBD, see TODO(vpos-credentials)
-    // above). /c/[slug] is a locale-less redirector to the certificate's
-    // stored locale, since this interface (spec §7) carries no locale param.
-    const slug = slugFromId(Number(certId));
-    const returnUrl = `${BASE_URL}/c/${slug}`;
-    const failUrl = `${BASE_URL}/c/${slug}?payment=failed`;
+    const currencyCode = CURRENCY_CODES[currency];
+    if (!currencyCode) {
+      throw new Error(`Unsupported V-POS currency: ${currency}`);
+    }
 
-    const params = new URLSearchParams({
-      userName: MERCHANT_ID,
-      password: MERCHANT_SECRET,
-      orderNumber: certId,
-      amount: String(amount), // AMD has no minor unit; confirm whether ArCa expects luma (x100) once docs are in hand
-      currency,
-      returnUrl,
-      failUrl,
+    // Single BackURL — this protocol doesn't have separate success/fail
+    // redirect targets; both land here and are told apart by resposneCode.
+    const backUrl = `${BASE_URL}/api/webhooks/vpos`;
+
+    const data = await vposFetch<InitPaymentResponse>("InitPayment", {
+      ClientID: CLIENT_ID,
+      Username: USERNAME,
+      Password: PASSWORD,
+      Currency: currencyCode,
+      Description: `thing.am certificate ${certId}`,
+      OrderID: Number(certId),
+      Amount: amount,
+      BackURL: backUrl,
     });
 
-    const response = await fetch(`${VPOS_BASE_URL}/register.do`, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: params.toString(),
-    });
-
-    const data = (await response.json()) as VposRegisterResponse;
-
-    if (!data.formUrl || data.errorCode) {
+    if (data.ResponseCode !== 1 || !data.PaymentID) {
       throw new Error(
-        `V-POS registration failed: ${data.errorCode ?? "unknown"} ${data.errorMessage ?? ""}`.trim()
+        `V-POS InitPayment failed: ${data.ResponseCode ?? "unknown"} ${data.ResponseMessage ?? ""}`.trim()
       );
     }
 
-    return { redirectUrl: data.formUrl };
+    return { redirectUrl: `${VPOS_BASE_URL}/Payments/Pay?id=${encodeURIComponent(data.PaymentID)}` };
   },
 
   async verifyCallback(payload) {
-    const body = payload as VposCallbackPayload;
+    const query = payload as { orderID?: string; paymentID?: string; resposneCode?: string };
 
-    if (!body.orderNumber || !body.signature) {
+    if (!query.orderID || !query.paymentID) {
       return { ok: false, providerRef: "", certId: "" };
     }
 
-    // TODO(vpos-credentials): confirm the exact field concatenation order
-    // and hash algorithm ArCa uses for callback signing — this HMAC-SHA256
-    // scheme is a placeholder shape, not verified against bank docs.
-    const expectedSignature = crypto
-      .createHmac("sha256", CALLBACK_SECRET)
-      .update(`${body.orderId ?? ""}:${body.orderNumber}:${body.amount ?? ""}:${body.status ?? ""}`)
-      .digest("hex");
+    // The redirect's own resposneCode is informational only — the actual
+    // trust boundary is this authenticated server-to-server call.
+    const details = await getPaymentDetails(query.paymentID);
 
-    const ok =
-      body.signature === expectedSignature &&
-      (body.status === "1" || body.status === "success" || body.status === "deposited");
+    if (details.OrderStatus === 2) {
+      // Single-stage: already fully captured.
+      return { ok: true, providerRef: query.paymentID, certId: query.orderID };
+    }
 
-    return {
-      ok,
-      providerRef: body.orderId ?? "",
-      certId: body.orderNumber,
-    };
+    if (details.OrderStatus === 1) {
+      // Two-stage: funds are held, not yet captured — capture the full
+      // amount now so "paid" always means "money actually collected".
+      const confirmed = await confirmPayment(query.paymentID, details.Amount ?? 0);
+      if (confirmed.ResponseCode === "00") {
+        return { ok: true, providerRef: query.paymentID, certId: query.orderID };
+      }
+      console.error("V-POS ConfirmPayment failed", confirmed);
+      return { ok: false, providerRef: query.paymentID, certId: query.orderID };
+    }
+
+    // OrderStatus 0/3/4/5/6 (started/void/refunded/autoauthorized/declined)
+    // — not a completed payment.
+    return { ok: false, providerRef: query.paymentID, certId: query.orderID };
   },
 };
